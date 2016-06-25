@@ -59,7 +59,7 @@ public class SearchActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        filter= new SearchFilters("20160202");
+        filter= new SearchFilters("20160202", "oldest", "random");
 
         setupView();
 
@@ -201,7 +201,13 @@ public class SearchActivity extends AppCompatActivity {
         params.put("q", query);
 
         //Applying Filters
-        params.put("end_date", filter.getBegin_date());
+        params.put("begin_date", filter.getBegin_date());
+        params.put("sort", filter.getSort());
+
+        if (filter.getNews_desk() != "random"){
+            params.put("fq", "news_desk:(\"" + filter.getNews_desk() + "\")");
+        }
+
 
 
 
@@ -260,14 +266,14 @@ public class SearchActivity extends AppCompatActivity {
         // REQUEST_CODE is defined above
         if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
             // Extract name value from result extras
-            //WHY IS MY DATA NULL???????????
 
 
-             filter = (SearchFilters) new_data.getParcelableExtra("filter");
+
+            filter = (SearchFilters) new_data.getParcelableExtra("filter");
             //We then have to globalize this new filter that we updated.
 
 
-            Toast.makeText(this, filter.getBegin_date(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, filter.getNews_desk(), Toast.LENGTH_SHORT).show();
 
         }
 

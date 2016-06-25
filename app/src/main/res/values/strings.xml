@@ -10,4 +10,8 @@
     <string name="date">YYYYMMDD</string>
     <string name="save">Save</string>
     <string name="order">Sort Order: </string>
+    <string name="new_Desk">News Desk Values:</string>
+    <string name="education">Education</string>
+    <string name="arts">Arts</string>
+    <string name="sports">Sports</string>
 </resources>
